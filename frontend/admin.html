@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель адміністратора</title>
+    <link rel="stylesheet" href="kursova.css">
+    <link rel="stylesheet" href="admin/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="messageBox" class="message"></div>
+
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="nav-left">
+                <a href="kursova.html" class="nav-logo">
+                    <img src="images/logo.png" alt="Логотип" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="account.html" class="nav-icon" title="Аккаунт">
+                    <i class="fas fa-user"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <script type="module">
+        import { isAdmin, initializeAdminPanel } from './admin/admin.js';
+        
+        // Перевіряємо чи є користувач адміністратором
+        if (!isAdmin()) {
+            window.location.href = 'kursova.html';
+        } else {
+            // Ініціалізуємо панель адміністратора
+            initializeAdminPanel();
+        }
+    </script>
+    <script src="kursova.js"></script>
+</body>
+</html>

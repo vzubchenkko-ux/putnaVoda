@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вода</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .water-select-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .modal-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #e6f3ff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .water-title {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .water-subtitle {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .volume-item {
+      background: #ffffff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .volume-text {
+      color: #003366;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .volume-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .volume-btn {
+      background: #001427;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .volume-btn:hover {
+      background: #002b4d;
+    }
+
+    .volume-count {
+      color: #003366;
+      font-size: 18px;
+      min-width: 30px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .total-sum {
+      color: #003366;
+      text-align: center;
+      margin: 20px 0;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 8px;
+    }
+
+    .add-to-cart-modal {
+      width: 100%;
+      padding: 15px;
+      background: #001427;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart-modal:hover {
+      background: #002b4d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="cart.html" id="cartBtn" class="nav-button">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+    <div class="message" id="messageBox"></div>
+    <p>Вода</p>
+    <a href="#" class="back-button" onclick="history.back(); return false;">&#8592;</a>
+  </header>
+
+  <!-- Модальне вікно вибору води -->
+  <div id="waterSelectModal" class="water-select-modal">
+    <div class="modal-box">
+      <h2 class="water-title" id="waterTitle"></h2>
+      <p class="water-subtitle">Оберіть бажану тару</p>
+      <div class="volume-item">
+        <span class="volume-text">5 літрів</span>
+        <div class="volume-controls">
+          <button class="volume-btn minus" data-volume="5">-</button>
+          <span class="volume-count" data-volume="5">0</span>
+          <button class="volume-btn plus" data-volume="5">+</button>
+        </div>
+      </div>
+      <div class="volume-item">
+        <span class="volume-text">6 літрів</span>
+        <div class="volume-controls">
+          <button class="volume-btn minus" data-volume="6">-</button>
+          <span class="volume-count" data-volume="6">0</span>
+          <button class="volume-btn plus" data-volume="6">+</button>
+        </div>
+      </div>
+      <div class="volume-item">
+        <span class="volume-text">10 літрів</span>
+        <div class="volume-controls">
+          <button class="volume-btn minus" data-volume="10">-</button>
+          <span class="volume-count" data-volume="10">0</span>
+          <button class="volume-btn plus" data-volume="10">+</button>
+        </div>
+      </div>
+      <div class="volume-item">
+        <span class="volume-text">19 літрів</span>
+        <div class="volume-controls">
+          <button class="volume-btn minus" data-volume="19">-</button>
+          <span class="volume-count" data-volume="19">0</span>
+          <button class="volume-btn plus" data-volume="19">+</button>
+        </div>
+      </div>
+      <div class="total-sum">
+        Загальна вартість: <span id="totalSum">0.00</span> грн
+      </div>
+      <button class="add-to-cart-modal" id="addToCartModal">В кошик</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="product-container">
+      <!-- Товар 1 -->
+      <div class="product">
+        <img src="ph.ipg.PNG" alt="Вода pH" class="product-image">
+        <h3 class="product-name">Вода pH</h3>
+        <p class="product-price">1.50грн/літр</p>
+        <p class="product-description">Чиста вода з оптимальним рівнем pH.</p>
+        <button class="add-to-cart" data-type="ph">В кошик</button>
+      </div>
+  
+      <!-- Товар 2 -->
+      <div class="product">
+        <img src="min.jpg" alt="Мінералізована вода" class="product-image">
+        <h3 class="product-name">Мінералізована вода</h3>
+        <p class="product-price">1.50грн/літр</p>
+        <p class="product-description">Вода з додатковими корисними мінералами для організму.</p>
+        <button class="add-to-cart" data-type="mineral">В кошик</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+  <script src="kursova.js"></script>
+  <script>
+    // Створюємо глобальний об'єкт кошика
+    window.cart = new Cart();
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('waterSelectModal');
+      const waterTitle = document.getElementById('waterTitle');
+      const totalSum = document.getElementById('totalSum');
+      const addToCartButtons = document.querySelectorAll('.add-to-cart');
+      const addToCartModal = document.getElementById('addToCartModal');
+      const cartBtn = document.getElementById('cartBtn');
+      
+      // Показуємо кнопку кошика, якщо користувач авторизований
+      if (localStorage.getItem('token')) {
+        cartBtn.style.display = 'block';
+      }
+
+      let currentWaterType = '';
+      const pricePerLiter = 1.50;
+      const volumes = {
+        '5': 0,
+        '6': 0,
+        '10': 0,
+        '19': 0
+      };
+
+      function closeModal() {
+        modal.style.display = 'none';
+        // Скидаємо значення
+        Object.keys(volumes).forEach(key => volumes[key] = 0);
+        updateAllCounts();
+        calculateTotal();
+      }
+
+      // Відкриття модального вікна при кліку на "В кошик"
+      addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            showMessage('Для того, щоб додати товар в кошик потрібно увійти в акаунт', true);
+            return;
+          }
+          
+          currentWaterType = button.dataset.type;
+          waterTitle.textContent = currentWaterType === 'ph' ? 'Вода pH' : 'Вода мінералізована';
+          
+          // Скидаємо всі значення
+          Object.keys(volumes).forEach(key => volumes[key] = 0);
+          updateAllCounts();
+          calculateTotal();
+          
+          modal.style.display = 'block';
+        });
+      });
+
+      // Закриття модального вікна при кліку поза ним
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Обробка кнопок +/-
+      document.querySelectorAll('.volume-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const volume = button.dataset.volume;
+          if (button.classList.contains('minus')) {
+            if (volumes[volume] > 0) {
+              volumes[volume]--;
+            }
+          } else {
+            volumes[volume]++;
+          }
+          updateCount(volume);
+          calculateTotal();
+        });
+      });
+
+      // Оновлення відображення кількості
+      function updateCount(volume) {
+        const countElement = document.querySelector(`.volume-count[data-volume="${volume}"]`);
+        if (countElement) {
+          countElement.textContent = volumes[volume];
+        }
+      }
+
+      // Оновлення всіх лічильників
+      function updateAllCounts() {
+        Object.keys(volumes).forEach(volume => {
+          updateCount(volume);
+        });
+      }
+
+      // Розрахунок загальної вартості
+      function calculateTotal() {
+        let total = 0;
+        Object.entries(volumes).forEach(([volume, count]) => {
+          total += count * volume * pricePerLiter;
+        });
+        totalSum.textContent = total.toFixed(2);
+      }
+
+      // Додавання в кошик
+      addToCartModal.addEventListener('click', () => {
+        let hasItems = false;
+        Object.values(volumes).forEach(count => {
+          if (count > 0) hasItems = true;
+        });
+
+        if (!hasItems) {
+          showMessage('Будь ласка, оберіть кількість води', true);
+          return;
+        }
+
+        const productName = currentWaterType === 'ph' ? 'Вода pH' : 'Вода мінералізована';
+
+        try {
+          // Додаємо кожний обраний об'єм як окремий товар
+          Object.entries(volumes).forEach(([volume, count]) => {
+            if (count > 0) {
+              const item = {
+                type: 'water',
+                name: productName,
+                key: `water_${currentWaterType}_${volume}_${Date.now()}`,
+                volume: parseInt(volume),
+                quantity: count,
+                price: volume * pricePerLiter,
+                size: volume + 'л',
+                image: currentWaterType === 'ph' ? 'ph.ipg.PNG' : 'min.jpg'
+              };
+              console.log('Додаємо товар:', item);
+              window.cart.addItem(item);
+            }
+          });
+
+          // Закриваємо модальне вікно
+          closeModal();
+          
+          // Показуємо повідомлення про успішне додавання
+          showMessage('Товар додано до кошика!');
+        } catch (error) {
+          console.error('Помилка при додаванні в кошик:', error);
+          showMessage('Помилка при додаванні товару в кошик', true);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

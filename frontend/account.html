@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Особистий кабінет</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="kursova.html" class="back-button">Назад</a>
+      <a href="cart.html" id="cartBtn" class="nav-button">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+    <p class="logo">ПРОФIЛЬ</p>
+  </header>
+
+  <div class="account-container">
+    <div class="profile-section">
+      <div class="profile-header">
+        <h2>Особисті дані</h2>
+        <button id="editProfileBtn" class="edit-button">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+      </div>
+
+      <form id="profileForm" class="profile-form">
+        <div class="form-group">
+          <label>Ім'я:</label>
+          <input type="text" id="firstName" disabled />
+        </div>
+        
+        <div class="form-group">
+          <label>Прізвище:</label>
+          <input type="text" id="lastName" disabled />
+        </div>
+        
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" id="email" disabled required />
+        </div>
+        
+        <div class="form-group">
+          <label>Дата народження:</label>
+          <input type="date" id="dob" disabled />
+        </div>
+        
+        <div class="form-group">
+          <label>Пароль:</label>
+          <input type="password" id="password" disabled value="••••••••" />
+        </div>
+
+        <div class="form-buttons" style="display: none;">
+          <button type="submit" class="save-button">Зберегти</button>
+          <button type="button" class="cancel-button">Скасувати</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="orders-section">
+      <h2>Історія замовлень</h2>
+      <div class="orders-container">
+        <div id="ordersList" class="orders-list">
+          <!-- Замовлення будуть додані через JavaScript -->
+          <p class="no-orders-message">У вас поки немає замовлень</p>
+        </div>
+      </div>
+    </div>
+
+    <button id="logoutBtn" class="logout-button">
+      <i class="fas fa-sign-out-alt"></i>
+      Вийти з акаунту
+    </button>
+  </div>
+
+  <!-- Модальне вікно для підтвердження виходу -->
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <h3>Підтвердження виходу</h3>
+      <p>Ви дійсно бажаєте вийти з акаунту?</p>
+      <div class="modal-buttons">
+        <button id="confirmLogout" class="confirm-button">Так, вийти</button>
+        <button id="cancelLogout" class="cancel-button">Скасувати</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="kursova.js"></script>
+</body>
+</html> 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Реєстрація</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="message" id="messageBox"></div>
+
+    <h1 class="login-title">Реєстрація</h1>
+    <form id="registerForm" class="login-form">
+      <input type="text" id="registerLastName" placeholder="Прізвище" />
+      <input type="text" id="registerFirstName" placeholder="Ім'я" />
+      <input type="date" id="registerDOB" placeholder="Дата народження" />
+      <input type="email" id="registerEmail" placeholder="Email" required />
+      <input type="password" id="registerPassword" placeholder="Пароль" required />
+      <button type="submit">Зареєструватися</button>
+    </form>
+  </div>
+
+  <script src="kursova.js"></script>
+</body>
+</html>

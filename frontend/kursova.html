@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Магазин води "Питна вода"</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="login.html" id="loginBtn" class="nav-button">
+        <i class="fas fa-sign-in-alt"></i> Увійти</a>
+      <a href="account.html" id="profileBtn" class="nav-button">
+        <i class="fas fa-user"></i>
+      </a>
+      <a href="cart.html" id="cartBtn" class="nav-button">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+    <p class="logo">ПИТНА VODA</p>
+  </header>
+
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  
+  <nav class="sidebar">
+    <ul>
+      <li>
+        <input type="checkbox" id="submenu-toggle" />
+        <label for="submenu-toggle" class="submenu-label">Товари</label>
+        <ul class="submenu">
+          <li><a href="voda.html">Вода</a></li>
+          <li><a href="balon.html">Тара</a></li>
+          <li><a href="ruchka.html">Ручки</a></li>
+          <li><a href="akcecyar.html">Iншi аксесуари</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">Про нас</a></li>
+      <li><a href="#contacts">Контакти</a></li>
+    </ul>
+  </nav>
+  
+  <script src="cart.js"></script>
+  <script src="kursova.js"></script>
+</body>
+</html>

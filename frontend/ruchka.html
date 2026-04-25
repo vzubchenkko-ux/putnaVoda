@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ручки - Aqua Plus</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="cart.html" id="cartBtn" class="nav-button" style="display: none;">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+    <div class="message" id="messageBox"></div>
+    <p>Ручки</p>
+    <a href="#" class="back-button" onclick="history.back(); return false;">&#8592;</a>
+  </header>
+
+
+  <div class="container">
+    <div id="product-container">
+      <!-- Ручка 1 -->
+      <div class="product pen">
+        <img src="images/pen1.jpg" alt="Ручка синя" class="product-image">
+        <h3 class="product-name">Ручка синя</h3>
+        <p class="product-price">15 грн</p>
+        <p class="product-description">Класична синя ручка з тонким пишучим вузлом. Ергономічний дизайн забезпечує комфортне письмо. Чорнило стійке до вицвітання. Ідеальна для щоденного використання в офісі чи навчанні.</p>
+        <input type="checkbox" class="cart-toggle" id="pen1">
+        <button class="add-to-cart" onclick="addToCart('pen1', 'Ручка синя', 15)">В кошик</button>
+        <div class="quantity-controls">
+          <button class="decrease" onclick="decreaseQuantity('pen1')">-</button>
+          <span class="quantity">1</span>
+          <button class="increase" onclick="increaseQuantity('pen1')">+</button>
+        </div>
+      </div>
+
+      <!-- Ручка 2 -->
+      <div class="product pen">
+        <img src="images/pen2.jpg" alt="Ручка чорна" class="product-image">
+        <h3 class="product-name">Ручка чорна</h3>
+        <p class="product-price">15 грн</p>
+        <p class="product-description">Елегантна чорна ручка з середнім пишучим вузлом. Плавне письмо та стильний дизайн. Ідеальна для ділових документів та офіційних паперів. Забезпечує чіткі та контрастні лінії.</p>
+        <input type="checkbox" class="cart-toggle" id="pen2">
+        <button class="add-to-cart" onclick="addToCart('pen2', 'Ручка чорна', 15)">В кошик</button>
+        <div class="quantity-controls">
+          <button class="decrease" onclick="decreaseQuantity('pen2')">-</button>
+          <span class="quantity">1</span>
+          <button class="increase" onclick="increaseQuantity('pen2')">+</button>
+        </div>
+      </div>
+
+      <!-- Ручка 3 -->
+      <div class="product pen">
+        <img src="images/pen3.jpg" alt="Ручка червона" class="product-image">
+        <h3 class="product-name">Ручка червона</h3>
+        <p class="product-price">15 грн</p>
+        <p class="product-description">Яскрава червона ручка для виділення важливих заміток. Насичений колір та комфортне утримання. Ідеальна для перевірки документів та внесення правок. Чорнило стійке до вицвітання.</p>
+        <input type="checkbox" class="cart-toggle" id="pen3">
+        <button class="add-to-cart" onclick="addToCart('pen3', 'Ручка червона', 15)">В кошик</button>
+        <div class="quantity-controls">
+          <button class="decrease" onclick="decreaseQuantity('pen3')">-</button>
+          <span class="quantity">1</span>
+          <button class="increase" onclick="increaseQuantity('pen3')">+</button>
+        </div>
+      </div>
+
+      <!-- Ручка 4 -->
+      <div class="product pen">
+        <img src="images/pen4.jpg" alt="Ручка зелена" class="product-image">
+        <h3 class="product-name">Ручка зелена</h3>
+        <p class="product-price">15 грн</p>
+        <p class="product-description">Зелена ручка з м'яким написанням. Ідеальна для творчих проектів та кольорових позначок. Зручна форма для тривалого використання. Особливо підходить для виділення важливої інформації.</p>
+        <input type="checkbox" class="cart-toggle" id="pen4">
+        <button class="add-to-cart" onclick="addToCart('pen4', 'Ручка зелена', 15)">В кошик</button>
+        <div class="quantity-controls">
+          <button class="decrease" onclick="decreaseQuantity('pen4')">-</button>
+          <span class="quantity">1</span>
+          <button class="increase" onclick="increaseQuantity('pen4')">+</button>
+        </div>
+      </div>
+
+      <!-- Ручка 5 -->
+      <div class="product pen">
+        <img src="images/pen5.jpg" alt="Ручка фіолетова" class="product-image">
+        <h3 class="product-name">Ручка фіолетова</h3>
+        <p class="product-price">15 грн</p>
+        <p class="product-description">Фіолетова ручка з особливим дизайном. Гладке письмо та стійке чорнило. Прекрасний вибір для творчих особистостей. Ергономічна форма забезпечує комфортне тривале використання.</p>
+        <input type="checkbox" class="cart-toggle" id="pen5">
+        <button class="add-to-cart" onclick="addToCart('pen5', 'Ручка фіолетова', 15)">В кошик</button>
+        <div class="quantity-controls">
+          <button class="decrease" onclick="decreaseQuantity('pen5')">-</button>
+          <span class="quantity">1</span>
+          <button class="increase" onclick="increaseQuantity('pen5')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+  <script src="kursova.js"></script>
+</body>
+</html>

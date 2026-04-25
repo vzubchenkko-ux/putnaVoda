@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Про нас</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .about-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .about-section {
+      background: #cceeff;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-content {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-image {
+      flex: 1;
+      min-height: 400px;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .about-text {
+      flex: 1;
+      color: #001427;
+    }
+
+    .about-text h2 {
+      color: #001427;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+    }
+
+    .contact-info h3 {
+      color: #001427;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .contact-item i {
+      width: 25px;
+      color: #001427;
+      margin-right: 10px;
+    }
+
+    .map-container {
+      width: 100%;
+      height: 450px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-image, .about-text {
+        width: 100%;
+      }
+
+      .about-image {
+        min-height: 300px;
+      }
+
+      .map-container {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="cart.html" id="cartBtn" class="nav-button">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+    <p>Про нас</p>
+    <a href="#" class="back-button" onclick="history.back(); return false;">&#8592;</a>
+  </header>
+
+  <div class="about-container">
+    <div class="about-section">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>ПИТНА VODA</h2>
+          <p>Ласкаво просимо до нашого магазину питної води! Ми спеціалізуємось на продажу якісної питної води різних видів та об'ємів.</p>
+          <p>Наш магазин пропонує великий вибір води з різним рівнем мінералізації та pH, щоб задовольнити потреби кожного клієнта.</p>
+          <p>У нас ви знайдете воду в тарі різного об'єму, а також усе необхідне обладнання та аксесуари.</p>
+          
+          <div class="contact-info">
+            <h3>Контактна інформація</h3>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>info@pytna.ua</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <p>Пн-Нд: 9:00 - 19:00</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>м. Кривий Ріг, вул. Едуарда-Фукса 48</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="magaz.jpg" alt="Магазин ПИТНА VODA">
+        </div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5342.250765189439!2d33.429559935806886!3d47.972634664857146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dae10050f54791%3A0xf5baf445c32c9798!2z0J_QmNCi0J3QkCDQktCe0JTQkA!5e0!3m2!1suk!2sua!4v1749581931888!5m2!1suk!2sua" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+  <script src="kursova.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cartBtn = document.getElementById('cartBtn');
+      if (localStorage.getItem('token')) {
+        cartBtn.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html> 

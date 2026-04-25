@@ -1,0 +1,1846 @@
+@font-face {
+  font-family: 'Screpka'; /* ← зробити однаковим з тим, що в header */
+  src: url('fruft/Screpka.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #001427;
+  }
+  
+  header {
+    position: relative;
+    background-color: #cceeff;
+    color: #001427;
+    height: 140px; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Screpka', sans-serif;
+    font-size: 60px;
+    padding: 10px 30px;
+  }
+  
+  .login-button {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    text-decoration: none;
+    color: #001427;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: 1px solid #001427;
+    border-radius: 20px;
+    font-size: 16px;
+    transition: 0.3s;
+    background: none;
+  }
+  
+  .nav-button {
+    text-decoration: none;
+    color: #001427;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    transition: opacity 0.3s ease;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    border: none;
+    padding: 0;
+  }
+  
+  .nav-button:hover {
+    opacity: 0.7;
+  }
+  
+  .nav-button.show {
+    display: inline-block;
+  }
+  
+  .login-button:hover {
+    background-color: #001427;
+    color: #cceeff !important;
+    cursor: pointer;
+  }
+  
+  .logo {
+    margin-top: 40px;
+  }
+  
+  
+/* Сховати чекбокс */
+#menu-toggle {
+  display: none;
+}
+
+/* Іконка бургер-меню */
+.menu-icon {
+  font-size: 30px;
+  color: #001427;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  top: 2px;
+  left: 10px;
+  z-index: 1001;
+  border-radius: 5px;
+}
+
+/* Сайдбар */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px; /* приховано зліва */
+  width: 280px;
+  height: 100%;
+  background-color: #000d1a;
+  color: #cceeff;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+#menu-toggle:checked + .menu-icon {
+  color: #cceeff;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 1rem;
+}
+
+.sidebar a {
+  color: #cceeff;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Screpka', sans-serif;
+  font-size: 45px;
+}
+
+/* Якщо чекбокс активний — показати меню */
+#menu-toggle:checked + .menu-icon + .sidebar {
+  left: 0;
+}
+
+  /* Сховати чекбокс для керування підменю */
+#submenu-toggle {
+  display: none;
+}
+
+/* Стиль для заголовка підменю */
+.submenu-label {
+  cursor: pointer;
+  color: #cceeff;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: 'Screpka', sans-serif;
+  font-size: 45px;
+}
+
+/* Підменю за замовчуванням сховане */
+.submenu {
+  display: none;
+  padding-left: 1rem;
+}
+
+/* Показати підменю, якщо чекбокс активний */
+#submenu-toggle:checked + .submenu-label + .submenu {
+  display: block;
+}
+
+.submenu li {
+  padding: 0.5rem 0;
+}
+
+.submenu a {
+  font-size: 30px;
+  text-decoration: none;
+}
+
+/* Стиль контейнера для СТОРІНКИ ВОДИ*/ 
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/*Стрілка назад*/
+.back-button {
+  font-size: 20px;
+  color: #001427;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  top: 2px;
+  left: 10px;
+  text-decoration: none;
+}
+
+/* Стилі для контейнера продуктів */
+#product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Стилі для карточки продукту */
+.product {
+    width: 320px; /* Збільшена ширина */
+    height: 340px;
+  background-color: #cceeff;
+    border-radius: 15px;
+    padding: 20px; /* Збільшений padding */
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+  text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.product:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-name {
+    color: #001427;
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.product-price {
+    color: #001427;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 6px 0;
+}
+
+.product-description {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: 0 0 10px 0;
+    max-height: 38px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Спеціальні стилі для карток з тарою */
+.product.bottle {
+    width: 360px; /* Ще більша ширина для тари */
+    height: auto;
+    min-height: 500px; /* Збільшена мінімальна висота */
+    padding: 25px; /* Більший padding для тари */
+    padding-bottom: 70px; /* Збільшений відступ для кнопки */
+}
+
+.product.bottle .product-image {
+    width: 200px; /* Більше зображення */
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+.product.bottle .product-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+    color: #333;
+    /* Прибираємо всі обмеження для тексту */
+    max-height: unset;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    white-space: normal;
+    text-overflow: clip;
+    padding: 0 10px; /* Додатковий бічний відступ для тексту */
+}
+
+/* Фіксуємо позицію кнопки внизу картки */
+.product.bottle .add-to-cart,
+.product.bottle .quantity-controls {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+}
+
+/* Збільшуємо висоту картки для тари щоб помістити більший опис */
+.product.bottle {
+    height: 360px;
+}
+
+/* Стилі для кнопок та контролів */
+.add-to-cart {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    width: 80%;
+    max-width: 160px;
+    position: absolute;
+    bottom: 12px;
+}
+
+.add-to-cart:hover {
+    background-color: #cceeff;
+    color: #001427;
+}
+
+.quantity-controls {
+    gap: 10px;
+    position: absolute;
+    bottom: 12px;
+    width: 80%;
+    max-width: 160px;
+}
+
+.quantity-controls button {
+    width: 26px;
+    height: 26px;
+    font-size: 0.9rem;
+}
+
+.quantity-controls span {
+    font-size: 0.9rem;
+    min-width: 28px;
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 768px) {
+#product-container {
+  padding: 20px;
+        gap: 40px;
+}
+
+    .product {
+        width: 100%;
+        max-width: 360px;
+        height: 320px;
+}
+
+    .product.bottle {
+  width: 100%;
+        max-width: 400px;
+        min-height: 480px;
+        padding: 20px;
+        padding-bottom: 65px;
+    }
+
+    .product-image {
+        width: 150px;
+        height: 150px;
+}
+
+    .product-name {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 0.9rem;
+    }
+
+    .product-description {
+        font-size: 0.8rem;
+        max-height: 36px;
+    }
+
+    .product.bottle .product-image {
+        width: 180px;
+        height: 180px;
+}
+
+    .product.bottle .product-description {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0 0 15px 0;
+        padding: 0 5px;
+    }
+
+    .product.bottle .add-to-cart,
+    .product.bottle .quantity-controls {
+        bottom: 20px;
+        width: 90%;
+    }
+}
+
+/* Приховуємо чекбокс */
+.cart-toggle {
+    display: none !important;
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* Стилі для кнопки "В кошик" */
+.add-to-cart {
+  background-color: #001427;
+  color: #cceeff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    width: 80%;
+    max-width: 160px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #001427;
+  cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart:hover {
+    background-color: #cceeff;
+    color: #001427;
+}
+
+/* Стилі для контролів кількості */
+.quantity-controls {
+  display: none;
+  align-items: center;
+  gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 160px;
+    justify-content: center;
+}
+
+/* Показуємо контроли кількості після кліку */
+.cart-toggle:checked ~ .quantity-controls {
+    display: flex;
+}
+
+.cart-toggle:checked ~ .add-to-cart {
+  display: none;
+}
+
+/* Стилі для кнопок +/- */
+.quantity-controls button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #001427;
+    background: none;
+    color: #001427;
+    font-size: 1rem;
+    cursor: pointer;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.quantity-controls button:hover {
+    background-color: #001427;
+    color: #cceeff;
+}
+
+.quantity-controls span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #001427;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Специфічні стилі для карток з тарою */
+.product.bottle .add-to-cart {
+    background-color: #001427;
+    color: #cceeff;
+    border: 2px solid #001427;
+}
+
+.product.bottle .add-to-cart:hover {
+    background-color: #cceeff;
+    color: #001427;
+}
+
+.product.bottle .quantity-controls {
+    bottom: 15px;
+}
+
+/* Стилі для сторінки login */
+.login-body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #001427;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-container {
+  background-color: #cceeff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 320px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Стилі для хедера */
+header {
+  position: relative;
+  background-color: #cceeff;
+  color: #001427;
+  height: 140px; 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Screpka', sans-serif;
+  font-size: 60px;
+  padding: 10px 30px;
+}
+
+/* Хедер для головної сторінки */
+.main-header {
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Screpka', sans-serif;
+  font-size: 60px;
+}
+
+/* Хедер для інших сторінок */
+.page-header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Стилі для іконок навігації */
+.nav-icon {
+  color: #001427;
+  font-size: 24px;
+  text-decoration: none;
+  padding: 8px;
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.nav-icon:hover {
+  color: #666;
+}
+
+/* Стилі для навігації в хедері */
+.header-nav {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.login-button {
+  display: inline-block !important;
+  text-decoration: none;
+  color: #001427;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px solid #001427;
+  border-radius: 20px;
+  font-size: 16px;
+  transition: 0.3s;
+  background: none;
+  position: static !important;
+}
+
+.login-button:hover {
+  background-color: #001427;
+  color: #cceeff !important;
+  cursor: pointer;
+}
+
+/* Специфічні стилі для форми входу */
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #001427;
+  color: #cceeff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+}
+
+.login-form button:hover {
+  opacity: 0.9;
+}
+
+.login-title {
+  color: #001427;
+  margin-bottom: 20px;
+}
+
+.login-footer-text {
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #001427;
+}
+
+.login-register-link {
+  color: #001427;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-register-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Повідомлення */
+.message-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: none;
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background-color: #cceeff;
+  color: #001427;
+  border: 1px solid #001427;
+}
+
+.message.show {
+  display: block;
+}
+
+.message.success {
+  background-color: #cceeff;
+  color: #001427;
+  border: 1px solid #001427;
+}
+
+.message.error {
+  background-color: #cceeff;
+  color: #001427;
+  border: 1px solid #001427;
+}
+
+/* Оновлені стилі для хедера */
+.header-nav {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Специфічні стилі для кнопок профілю та кошика */
+#profileBtn,
+#cartBtn {
+  color: #001427;
+}
+
+/* Ховер-ефекти для всіх кнопок */
+#profileBtn:hover,
+#cartBtn:hover {
+  opacity: 0.7;
+}
+
+/* Оновлені стилі для сторінки акаунту */
+.account-container {
+  max-width: 800px;
+  margin: 40px auto 20px;
+  padding: 20px;
+  background-color: #cceeff;
+  border-radius: 10px;
+}
+
+.profile-section {
+  background-color: #cceeff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  color: #001427;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #001427;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #001427;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.save-button, .cancel-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button {
+  background-color: #001427;
+  color: #cceeff;
+  border: none;
+}
+
+.cancel-button {
+  background-color: #cceeff;
+  color: #001427;
+  border: 1px solid #001427;
+}
+
+/* Стилі для секції історії замовлень */
+.orders-section {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0;
+  border-radius: 8px;
+}
+
+.orders-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.orders-list {
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.no-orders-message {
+  text-align: center;
+  color: #666;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+.order-item {
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.order-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.order-total {
+  font-weight: bold;
+  color: #001427;
+}
+
+.order-details {
+  margin-top: 0.5rem;
+}
+
+.order-product {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25rem 0;
+  color: #444;
+}
+
+/* Стилі для модального вікна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #cceeff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.modal-content h3 {
+  color: #001427;
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  color: #001427;
+  margin-bottom: 1.5rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.confirm-button {
+  padding: 8px 20px;
+  background-color: #001427;
+  color: #cceeff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-button:hover {
+  opacity: 0.9;
+}
+
+/* Оновлені стилі для кнопки скасування */
+.modal .cancel-button {
+  padding: 8px 20px;
+  background-color: transparent;
+  color: #001427;
+  border: 1px solid #001427;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal .cancel-button:hover {
+  background-color: rgba(0, 20, 39, 0.1);
+}
+
+.logout-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #001427;
+  color: #cceeff;
+  border: 2px solid #001427;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logout-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(204, 238, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #cceeff;
+  color: #001427;
+}
+
+.logout-button:hover:before {
+  left: 100%;
+}
+
+.logout-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Оновлюємо стиль іконки для кнопки виходу */
+.logout-button i {
+  font-size: 18px;
+}
+
+/* Стилі для сторінки кошика */
+.cart-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.cart-title {
+  color: #cceeff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.cart-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.cart-items {
+  background-color: #cceeff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: auto minmax(200px, 2fr) auto 100px;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 20, 39, 0.1);
+  background-color: #fff;
+}
+
+/* Закруглені кути для першого елемента в секції */
+.cart-section-header + .cart-item {
+  border-radius: 10px 10px 0 0;
+}
+
+/* Закруглені кути для останнього елемента в секції води */
+.cart-section-header:first-of-type + .cart-item:last-of-type,
+.cart-section-header:first-of-type + .cart-item:last-child {
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* Закруглені кути для останнього елемента в секції води, якщо є наступна секція */
+.cart-section-header:first-of-type + .cart-item:not(:last-child):last-of-type {
+  border-radius: 10px 10px 10px 10px;
+  margin-bottom: 20px;
+}
+
+/* Закруглені кути для першого елемента в секції тари */
+.cart-section-header:last-of-type + .cart-item {
+  border-radius: 10px 10px 0 0;
+}
+
+/* Закруглені кути для останнього елемента в секції тари */
+.cart-section-header:last-of-type + .cart-item:last-child,
+.cart-item:last-child {
+  border-radius: 0 0 10px 10px;
+  border-bottom: none;
+}
+
+/* Якщо елемент один в секції тари */
+.cart-section-header:last-of-type + .cart-item:last-child {
+  border-radius: 10px;
+}
+
+/* Стилі для елементів з тарою */
+.bottle-item {
+  background-color: #f8f9fa;
+}
+
+/* Оновлюємо стилі для заголовків секцій */
+.cart-section-header {
+  color: #001427;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 15px 0;
+  margin-top: 20px;
+  border-bottom: 2px solid rgba(0, 20, 39, 0.1);
+}
+
+.cart-section-header:first-child {
+  margin-top: 0;
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-details {
+  flex: 2;
+  padding-right: 20px;
+}
+
+.item-details h3 {
+  margin: 0 0 5px 0;
+}
+
+.item-price {
+  color: #666;
+  margin: 0 0 10px 0;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-btn {
+  background: none;
+  border: 1px solid #001427;
+  color: #001427;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: #001427;
+  color: #cceeff;
+}
+
+.quantity {
+  font-weight: bold;
+  color: #001427;
+}
+
+.item-total {
+  text-align: right;
+  font-weight: bold;
+  color: #001427;
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #ff4444;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.remove-item:hover {
+  color: #cc0000;
+  transform: scale(1.1);
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #001427;
+}
+
+.cart-empty i {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  color: #001427;
+  opacity: 0.7;
+}
+
+.cart-empty p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #001427;
+}
+
+.continue-shopping {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #001427;
+  color: #cceeff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.continue-shopping:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.continue-shopping:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary {
+  background-color: #cceeff;
+  border-radius: 10px;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-details {
+  margin-bottom: 1.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: #001427;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 20, 39, 0.1);
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #001427;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #001427;
+  color: #cceeff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.checkout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-button:active {
+  transform: translateY(0);
+}
+
+.checkout-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+}
+
+.checkout-button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .cart-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+
+  .item-image {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .item-details {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-right: 0;
+  }
+
+  .item-quantity {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .item-total {
+    grid-column: 1;
+    grid-row: 4;
+    text-align: left;
+    margin-right: 0;
+  }
+
+  .remove-item {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+}
+
+/* Спеціальні стилі для кнопки входу */
+#loginBtn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loginBtn:hover {
+  opacity: 0.7;
+}
+
+#loginBtn i {
+  font-size: 20px;
+  color: #001427;
+}
+
+/* Стилі для іконок */
+.nav-button i {
+  font-size: 20px;
+  display: inline-block;
+  color: #001427;
+}
+
+/* Стилі для повідомлень в кошику */
+.cart-message {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1000 !important;
+    margin-top: 20px !important;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+  opacity: 1;
+    }
+}
+
+/* Стилі для інформації про мінімальне замовлення */
+.min-order-info {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background-color: #cceeff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #001427;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.min-order-info i {
+    font-size: 20px;
+    color: #001427;
+}
+
+.min-order-info p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Стилі для модального вікна вибору бутлів */
+.bottle-selection-modal .modal-content {
+    max-width: 500px;
+    width: 90%;
+    padding: 30px;
+}
+
+.bottle-selection-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid rgba(0, 20, 39, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.bottle-option {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid rgba(0, 20, 39, 0.1);
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.bottle-size {
+    font-size: 18px;
+    font-weight: 500;
+    color: #001427;
+}
+
+.bottle-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-self: end;
+}
+
+.bottle-quantity {
+    font-size: 18px;
+    font-weight: 500;
+    color: #001427;
+    min-width: 30px;
+    text-align: center;
+}
+
+.total-volume {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e6f7ff;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #001427;
+    text-align: center;
+}
+
+.confirm-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #001427;
+    border-radius: 50%;
+    background: none;
+    color: #001427;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+  background-color: #001427;
+  color: #cceeff;
+}
+
+.quantity-btn:disabled {
+    border-color: #cccccc;
+    color: #cccccc;
+    cursor: not-allowed;
+}
+
+.bottle-info {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0 0;
+    padding: 2px 8px;
+    background-color: #e6f7ff;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Стилі для кнопки очищення кошика */
+.clear-cart-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #fff;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.clear-cart-button:hover {
+    background-color: #ffebee;
+}
+
+.clear-cart-button i {
+    font-size: 18px;
+}
+
+/* Оновлені стилі для інформації про бутлі */
+.bottles-info {
+    margin-top: 10px;
+}
+
+.total-volume {
+    font-size: 16px;
+    color: #001427;
+    font-weight: 500;
+    margin: 0 0 5px 0;
+}
+
+.bottle-distribution {
+    font-size: 14px;
+    color: #666;
+    background-color: #e6f7ff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin: 0;
+    display: inline-block;
+}
+
+/* Оновлюємо стилі для item-details щоб краще вмістити нову інформацію */
+.item-details {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.item-details h3 {
+    margin: 0 0 5px 0;
+}
+
+.item-price {
+    color: #666;
+    margin: 0 0 10px 0;
+}
+
+/* Оновлені стилі для вибору бутлів */
+.bottle-option {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid rgba(0, 20, 39, 0.1);
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.bottle-subtotal {
+    font-size: 16px;
+    color: #001427;
+    font-weight: 500;
+    text-align: right;
+    min-width: 80px;
+}
+
+.total-info {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #e6f7ff;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #001427;
+}
+
+.total-volume, .total-bottles, .total-water, .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.total-price {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 20, 39, 0.1);
+    font-weight: 600;
+}
+
+.total-bottles, .total-water {
+    color: #666;
+    font-size: 0.95em;
+}
+
+.bottles-price, .water-price, .price-value {
+    font-weight: 600;
+    color: #001427;
+}
+
+.bottle-size {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #001427;
+}
+
+/* Стилі для розділів кошика */
+.cart-section-header {
+    color: #001427;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 0;
+    margin-top: 20px;
+    border-bottom: 2px solid rgba(0, 20, 39, 0.1);
+}
+
+.cart-section-header:first-child {
+    margin-top: 0;
+}
+
+/* Стилі для елементів кошика */
+.cart-item {
+    display: grid;
+    grid-template-columns: auto minmax(200px, 2fr) auto 100px;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 20, 39, 0.1);
+    background-color: #fff;
+}
+
+.bottle-item {
+    background-color: #f8f9fa;
+}
+
+.total-volume, .bottle-quantity {
+    font-size: 14px;
+    color: #666;
+    background-color: #e6f7ff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* Оновлені стилі для мобільних пристроїв */
+@media (max-width: 768px) {
+    .cart-item {
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+    }
+
+    .cart-section-header {
+        padding: 10px 15px;
+        font-size: 1.1rem;
+    }
+
+    .item-image {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .item-details {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding-right: 0;
+    }
+
+    .item-total {
+        grid-column: 1;
+        grid-row: 3;
+        text-align: left;
+        margin-right: 0;
+    }
+
+    .remove-item {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+    }
+}
+
+/* Стилі для секцій кошика */
+.cart-section-header {
+    color: #001427;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 0;
+    margin-top: 20px;
+    border-bottom: 2px solid rgba(0, 20, 39, 0.1);
+}
+
+.cart-section-header:first-child {
+    margin-top: 0;
+}
+
+/* Стилі для елементів кошика */
+.cart-item {
+    display: grid;
+    grid-template-columns: auto minmax(200px, 2fr) auto 100px;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 20, 39, 0.1);
+    background-color: #fff;
+}
+
+/* Спеціальні стилі для тари в кошику */
+.cart-item.bottle-item {
+    background-color: #f8f9fa;
+    padding: 1.2rem;
+}
+
+.cart-item.bottle-item .item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-item.bottle-item .item-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #001427;
+}
+
+.cart-item.bottle-item .item-description {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+    margin: 5px 0;
+}
+
+.cart-item.bottle-item .item-volume {
+    font-size: 0.9rem;
+    color: #666;
+    background-color: #e6f7ff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.cart-item.bottle-item .item-price {
+    font-weight: 500;
+    color: #001427;
+}
+
+.cart-item.bottle-item .item-total {
+    font-weight: 600;
+    color: #001427;
+    font-size: 1.1rem;
+}
+
+/* Стилі для зображень в кошику */
+.cart-item .item-image {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.cart-item.bottle-item .item-image {
+    width: 90px;
+    height: 90px;
+}
+
+.cart-item .item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Стилі для контролів кількості */
+.cart-item.bottle-item .item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item.bottle-item .quantity-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #001427;
+    border-radius: 50%;
+    background: none;
+    color: #001427;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.cart-item.bottle-item .quantity-btn:hover {
+  background-color: #001427; 
+  color: #cceeff;
+}
+
+/* Адаптивні стилі для мобільних пристроїв */
+@media (max-width: 768px) {
+    .cart-item.bottle-item {
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .cart-item.bottle-item .item-image {
+        width: 80px;
+        height: 80px;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .cart-item.bottle-item .item-details {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding-right: 0;
+    }
+
+    .cart-item.bottle-item .item-quantity {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .cart-item.bottle-item .item-total {
+        grid-column: 1;
+        grid-row: 4;
+        text-align: left;
+    }
+
+    .cart-item.bottle-item .remove-item {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+    }
+
+    .cart-item.bottle-item .item-description {
+        font-size: 0.9rem;
+    }
+}

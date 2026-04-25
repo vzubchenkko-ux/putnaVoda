@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кошик</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="cart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="header-nav">
+      <a href="kursova.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Назад
+      </a>
+      <a href="account.html" id="profileBtn" class="nav-button">
+        <i class="fas fa-user"></i>
+      </a>
+    </nav>
+    <p class="logo">КОШИК</p>
+  </header>
+
+  <div class="cart-wrapper">
+    <!-- Лівий блок зі списком товарів -->
+    <div class="cart-items">
+      <div id="cartItemsList">
+        <!-- Порожній кошик -->
+        <div class="cart-empty" style="display: none;">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Ваш кошик порожній</p>
+          <a href="kursova.html" class="continue-shopping">Перейти до покупок</a>
+        </div>
+        <!-- Тут будуть відображатись товари -->
+      </div>
+    </div>
+
+    <!-- Правий блок з підсумком -->
+    <div class="cart-summary">
+      <h2>Ваше замовлення</h2>
+      
+      <!-- Інформація про мінімальне замовлення -->
+      <div class="min-order-info">
+        <i class="fas fa-info-circle"></i>
+        <p>Мінімальний об'єм замовлення: 5л</p>
+      </div>
+
+      <!-- Підсумок замовлення -->
+      <div class="order-total">
+        <div class="total-row">
+          <span>Загальна сума:</span>
+          <span id="totalAmount">0.00 грн</span>
+        </div>
+      </div>
+
+      <!-- Кнопки дій -->
+      <div class="cart-actions">
+        <button class="clear-cart-btn" onclick="cart.clearCart()">
+          <i class="fas fa-trash"></i>
+          Очистити кошик
+        </button>
+        <button class="checkout-btn" onclick="showPickupModal()">
+          <i class="fas fa-check"></i>
+          Оформити замовлення
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Перемістили контейнер для повідомлень під вміст кошика -->
+  <div id="messageBox" class="message cart-message"></div>
+
+  <!-- Модальне вікно для оформлення замовлення -->
+  <div id="pickupModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closePickupModal()">&times;</span>
+      <h2>Оформлення замовлення</h2>
+      
+      <div class="form-group">
+        <label>Оберіть день отримання:</label>
+        <div class="date-options">
+          <button id="todayBtn" class="date-option" onclick="selectDate('today')">
+            <span>Сьогодні</span>
+            <span class="date-details"></span>
+          </button>
+          <button id="tomorrowBtn" class="date-option" onclick="selectDate('tomorrow')">
+            <span>Завтра</span>
+            <span class="date-details"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Оберіть час отримання:</label>
+        <div class="time-slots">
+          <div id="visibleTimeSlots" class="visible-slots"></div>
+          <div id="hiddenTimeSlots" class="hidden-slots" style="display: none;"></div>
+          <button id="toggleSlotsBtn" class="toggle-slots-btn" style="display: none;">
+            Показати більше часу
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Оберіть спосіб оплати:</label>
+        <div class="payment-options">
+          <div class="payment-option" onclick="selectPaymentOption('full')" id="fullPayment">
+            <h3>100% оплата</h3>
+            <p>Повна оплата замовлення</p>
+          </div>
+          <div class="payment-option" onclick="selectPaymentOption('half')" id="halfPayment">
+            <h3>50% оплата</h3>
+            <p>Часткова передоплата</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="selected-datetime">
+        <p>Обраний час: <span id="selectedDateTime">Не вибрано</span></p>
+      </div>
+
+      <button class="confirm-order-btn" onclick="confirmOrder()" disabled>
+        Підтвердити замовлення
+      </button>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+  <script src="kursova.js"></script>
+</body>
+</html> 

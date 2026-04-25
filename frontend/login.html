@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Вхід</title>
+  <link rel="stylesheet" href="kursova.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="login-body">
+  <!-- Додаємо хедер -->
+    <div class="message" id="messageBox"></div>
+  <header class="main-header" style="display: none;">
+    <nav class="nav-container">
+      <div class="nav-right">
+        <a href="cart.html" class="nav-icon" title="Кошик">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a href="account.html" class="nav-icon" title="Аккаунт">
+          <i class="fas fa-user"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div id="messageBox" class="message"></div>
+  
+  <div class="login-container" id="loginContainer">
+    <h1 class="login-title">Увійти</h1>
+    <form id="loginForm" class="login-form">
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Пароль" required />
+      <button type="submit">Увійти</button>
+    </form>
+    <p class="login-footer-text">
+      Ще не маєте аккаунту?
+      <a href="register.html" class="login-register-link">Зареєструйтесь</a>
+    </p>
+  </div>
+
+  <!-- Підключення зовнішнього скрипта -->
+  <script src="kursova.js" defer></script>
+</body>
+</html>
