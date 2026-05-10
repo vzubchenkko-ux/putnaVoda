@@ -1127,7 +1127,7 @@ function updateCartDisplay() {
     // Оновлюємо загальну суму
     const totalAmount = document.getElementById('totalAmount');
     if (totalAmount) {
-        totalAmount.textContent = cart.getTotal().toFixed(2) + ' грн';
+        totalAmount.textContent = cart.getTotal().toFixed(2) + 'грн';
     }
 
     // Активуємо/деактивуємо кнопку оформлення замовлення
